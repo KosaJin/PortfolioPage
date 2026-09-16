@@ -1,15 +1,22 @@
 // This file does two small, separate jobs. Each is self-contained —
 // check with Eren before adding a third.
 
-// JOB 1 — fundamentals.html only: autoplay the study clips, but only if
-// the visitor hasn't turned on "reduce motion" in their OS/browser
-// settings. Harmless no-op on pages with no ".auto-clip" videos.
+// JOB 1 — fundamentals.html only: the study clips autoplay on their own
+// via the native "autoplay" attribute in the HTML — that's more reliable
+// than calling .play() from script (no promise to reject, no timing
+// dependency on this file having run yet). All this does is the opposite:
+// if the visitor has "reduce motion" on in their OS/browser settings, stop
+// the clips and drop them back to their poster image. Harmless no-op on
+// pages with no ".auto-clip" videos.
 
 var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (!prefersReducedMotion) {
+if (prefersReducedMotion) {
   document.querySelectorAll("video.auto-clip").forEach(function (video) {
-    video.play();
+    video.pause();
+    video.removeAttribute("autoplay");
+    video.currentTime = 0;
+    video.load(); // re-arms the poster image in place of the last decoded frame
   });
 }
 
