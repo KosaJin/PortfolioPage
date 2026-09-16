@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundamentals — Eren Can Sokmez</title>
+<meta name="description" content="Animation fundamentals studies — bouncing ball, walk cycle, weight tests.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a class="mark" href="index.html">Eren Can Sokmez</a>
+  <nav>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+  </nav>
+</header>
+
+<main class="fundamentals">
+
+  <h1>Fundamentals</h1>
+  <p>Study pieces from class and personal practice — the basics on repeat.</p>
+
+  <!-- ============ STUDIES — duplicate a <li> for each new clip ============ -->
+  <ul class="studies">
+
+    <li class="study">
+      <div class="frame study-frame">
+        <video class="auto-clip" muted loop playsinline
+               poster="images/PLACEHOLDER-ball.jpg">
+          <source src="videos/bouncing-ball.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="study-text">
+        <h3>Bouncing ball</h3>
+        <p class="edit">One line — what this shows: timing, spacing, squash and stretch.</p>
+      </div>
+    </li>
+
+    <li class="study">
+      <div class="frame study-frame">
+        <video class="auto-clip" muted loop playsinline
+               poster="images/PLACEHOLDER-walk.jpg">
+          <source src="videos/walk-cycle.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="study-text">
+        <h3>Walk cycle</h3>
+        <p class="edit">One line — what this shows: weight shift, contact poses, arcs.</p>
+      </div>
+    </li>
+
+  </ul>
+
+</main>
+
+<footer>
+  <p>Eren Can Sokmez · Sydney, Australia · <span class="edit">2026</span></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

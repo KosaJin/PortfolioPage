@@ -1,0 +1,268 @@
+/* ===================================================================
+   Eren — animation portfolio
+   Everything visual is controlled from this one file.
+   Change a value here and it changes across every page.
+   =================================================================== */
+
+:root {
+  --page:      #191c22;   /* page background — dark so grey playblasts read */
+  --panel:     #21252d;   /* video wells */
+  --ink:       #e8e6e1;   /* main text */
+  --ink-quiet: #8f9299;   /* secondary text */
+  --rule:      #2f343d;   /* hairlines */
+  --measure:   62ch;      /* comfortable line length */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 6vw 8rem;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Barlow", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: "Barlow Condensed", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin: 0 0 0.4em;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-top: 4rem; }
+h3 { font-size: 1.35rem; }
+
+p { max-width: var(--measure); margin: 0 0 1rem; }
+
+a { color: var(--ink); text-decoration-color: var(--ink-quiet);
+    text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--ink); }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* --- masthead ---------------------------------------------------- */
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 2rem 0 3rem;
+  flex-wrap: wrap;
+}
+.mark {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.masthead nav { display: flex; gap: 1.5rem; }
+.masthead nav a, .masthead nav .email { font-size: 0.95rem; color: var(--ink-quiet); }
+.masthead nav a:hover { color: var(--ink); }
+
+/* --- video wells ------------------------------------------------- */
+/* .frame keeps any video at 16:9 and stops it overflowing on phones */
+
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--panel);
+  overflow: hidden;
+}
+.frame iframe,
+.frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* --- reel hero --------------------------------------------------- */
+
+.reel-meta { padding-top: 2rem; }
+.reel-meta h1 { margin-bottom: 0.5rem; }
+.credits { color: var(--ink-quiet); font-size: 0.95rem; }
+
+/* --- shot list --------------------------------------------------- */
+
+.shots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.shot a { display: block; text-decoration: none; }
+.shot img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--panel);
+  display: block;
+  margin-bottom: 1rem;
+}
+.shot h3 { margin-bottom: 0.3rem; }
+.shot p { font-size: 0.95rem; }
+.spec { color: var(--ink-quiet); font-size: 0.875rem; }
+
+/* --- shot page --------------------------------------------------- */
+
+.shot-page h1 { margin-top: 2rem; }
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.5rem;
+  margin: 0 0 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.95rem;
+}
+.facts dt { color: var(--ink-quiet); }
+.facts dd { margin: 0; }
+
+.pair {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.back { margin-top: 3rem; }
+
+/* --- shot header: range/timecode + team credit, above the video ---- */
+/* Visible before anyone presses play, so there's no ambiguity about
+   what's yours before they even watch the clip. */
+
+.shot-header { margin: 2rem 0 1.5rem; }
+
+.shot-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0.4rem 0 1rem;
+}
+.shot-stats span:not(:first-child)::before {
+  content: "·";
+  color: var(--ink-quiet);
+  margin-right: 1rem;
+}
+
+.shot-credit {
+  color: var(--ink-quiet);
+  font-size: 0.95rem;
+  max-width: var(--measure);
+  margin: 0 0 0.5rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--rule);
+}
+
+/* --- shot breakdown list -------------------------------------------- */
+
+.claim-plain {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+
+.breakdown {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+}
+.breakdown li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.breakdown strong { color: var(--ink); }
+
+/* --- fundamentals studies ----------------------------------------- */
+/* Deliberately smaller and quieter than the .shots grid above — this
+   page is "foundation work", not headline portfolio pieces. */
+
+.fundamentals p { color: var(--ink-quiet); }
+
+.studies {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.study {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.study-frame {
+  width: 180px;
+  flex: 0 0 180px;
+}
+.study-text {
+  flex: 1 1 200px;
+  min-width: 160px;
+}
+.study-text h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+.study-text p {
+  font-size: 0.9rem;
+  color: var(--ink-quiet);
+  margin: 0;
+}
+
+/* --- about, footer ----------------------------------------------- */
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.icon-link { display: inline-flex; }
+.icon-link:hover { opacity: 0.75; }
+.icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+footer {
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-quiet);
+  font-size: 0.875rem;
+}
+
+/* --- placeholder marker ------------------------------------------ */
+/* Anything wrapped in <span class="edit"> is highlighted so you can
+   see what you still need to fill in. Delete this rule when done.   */
+
+.edit {
+  background: #4a3a12;
+  color: #f0d99a;
+  padding: 0 0.25em;
+}
