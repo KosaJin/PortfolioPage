@@ -210,17 +210,15 @@ a:hover { text-decoration-color: var(--ink); }
 }
 .study {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 .study-frame {
-  width: 180px;
-  flex: 0 0 180px;
+  width: 100%;
+  max-width: 540px; /* ~3x the old 180px thumbnail width */
 }
 .study-text {
-  flex: 1 1 200px;
-  min-width: 160px;
+  max-width: 540px;
 }
 .study-text h3 {
   font-size: 1.05rem;
