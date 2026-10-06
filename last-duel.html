@@ -6,7 +6,7 @@
 <title>The Last Duel — Eren Can Sokmez</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,19 +15,23 @@
   <a class="mark" href="index.html">Eren Can Sokmez</a>
   <nav>
     <a href="index.html#work">Work</a>
+    <a href="fundamentals.html">Studies</a>
     <a href="index.html#about">About</a>
   </nav>
 </header>
 
 <article class="shot-page">
 
+  <a class="crumb" href="index.html#work">&larr; All shots</a>
+
   <div class="shot-header">
+    <span class="label">Group cinematic · Maya</span>
     <h1>The Last Duel</h1>
-    <p class="shot-stats">
-      <span>Shots 12–19</span>
-      <span>1:29–1:55 in the final cut</span>
-      <span>26 seconds · 8 shots</span>
-    </p>
+    <div class="stats">
+      <div><span class="label">Shots</span><span class="v">12–19</span></div>
+      <div><span class="label">In the final cut</span><span class="v">1:29–1:55</span></div>
+      <div><span class="label">My footage</span><span class="v">26 s · 8 shots</span></div>
+    </div>
     <p class="shot-credit">
       Group cinematic, three animators — shot list divided by character.
       Everything in 12–19 is mine, both Sinn and Yakov.
@@ -48,13 +52,20 @@
   <p class="claim-plain">Hand-keyed animation throughout — no motion
      capture, no Mixamo or library clips.</p>
 
-  <ul class="breakdown">
-    <li><strong>Sinn</strong> — jump-down animation</li>
-    <li><strong>Yakov</strong> — sword swings</li>
-    <li><strong>Shot 15</strong> — Yakov: body animation with facial and lip sync</li>
-    <li><strong>Shot 16</strong> — Sinn: body animation with facial and lip sync</li>
-    <li><strong>Remaining shots (12–19)</strong> — both characters, full body animation</li>
-  </ul>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Shot or character</th><th scope="col">What I animated</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sinn</td><td>Jump-down animation</td></tr>
+        <tr><td>Yakov</td><td>Sword swings</td></tr>
+        <tr><td>Shot 15</td><td>Yakov: body animation with facial and lip sync</td></tr>
+        <tr><td>Shot 16</td><td>Sinn: body animation with facial and lip sync</td></tr>
+        <tr><td>Remaining shots (12–19)</td><td>Both characters, full body animation</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <dl class="facts">
     <dt>Software</dt><dd>Maya</dd>
@@ -62,7 +73,7 @@
     <dt>Full runtime</dt><dd class="edit">0:00 (whole piece, not just my shots)</dd>
   </dl>
 
-  <p>Write two or three sentences here: what the scene is, what you were
+  <p class="edit">Write two or three sentences here: what the scene is, what you were
      solving in these shots, and one decision you made that a lead would
      care about. Not a plot summary.</p>
 
@@ -71,13 +82,19 @@
      process is how a junior proves they understand the work.</p>
 
   <div class="pair">
-    <div class="frame">
-      <video src="videos/PLACEHOLDER-last-duel-reference.mp4" controls muted playsinline
-             poster="images/PLACEHOLDER.jpg"></video>
+    <div>
+      <div class="frame">
+        <video src="videos/PLACEHOLDER-last-duel-reference.mp4" controls muted playsinline
+               poster="images/PLACEHOLDER.jpg"></video>
+      </div>
+      <p class="caption">Reference</p>
     </div>
-    <div class="frame">
-      <video src="videos/PLACEHOLDER-last-duel-blocking.mp4" controls muted playsinline
-             poster="images/PLACEHOLDER.jpg"></video>
+    <div>
+      <div class="frame">
+        <video src="videos/PLACEHOLDER-last-duel-blocking.mp4" controls muted playsinline
+               poster="images/PLACEHOLDER.jpg"></video>
+      </div>
+      <p class="caption">Blocking pass</p>
     </div>
   </div>
 

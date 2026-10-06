@@ -1,78 +1,143 @@
 /* ===================================================================
-   Eren — animation portfolio
+   Eren — animation portfolio (KosaJin palette)
    Everything visual is controlled from this one file.
    Change a value here and it changes across every page.
+   Colours are the :root block below — change them there only.
    =================================================================== */
 
 :root {
-  --page:      #191c22;   /* page background — dark so grey playblasts read */
-  --panel:     #21252d;   /* video wells */
-  --ink:       #e8e6e1;   /* main text */
-  --ink-quiet: #8f9299;   /* secondary text */
-  --rule:      #2f343d;   /* hairlines */
+  --page:      #ffffff;   /* page background */
+  --panel:     #efe9f7;   /* lilac tint: bands, alternating table rows */
+  --ink:       #1c1b22;   /* main text — near-black, never pure black */
+  --ink-quiet: #5a5766;   /* secondary text, captions, labels */
+  --rule:      #d5d0e0;   /* borders and hairlines */
+  --brand:     #381d66;   /* deep violet: header band, table headers */
+  --on-brand:  #efe9f7;   /* text on the violet band */
+  --heading:   #381d66;   /* heading colour */
+  --gold:      #8f6414;   /* gold: rules, underlines, marks */
+  --edit-bg:   #f6ebcf;   /* "still to write" highlight */
+  --edit-ink:  #5e4108;
+  --well:      #1c1b22;   /* behind videos */
   --measure:   62ch;      /* comfortable line length */
+  --pad: max(clamp(1rem, 4vw, 2rem), calc((100% - 70rem) / 2)); /* side gutter */
+  --display: "Outfit", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Hanken Grotesk", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Dark version: follows the visitor's system setting automatically */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page:      #1c1b22;
+    --panel:     #262330;
+    --ink:       #efe9f7;
+    --ink-quiet: #a8a3b8;
+    --rule:      #3b3748;
+    --heading:   #cbb9f0;
+    --gold:      #a87a1f;
+    --edit-bg:   #3a2d12;
+    --edit-ink:  #ebcb86;
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 0 6vw 8rem;
+  padding: 0;
   background: var(--page);
   color: var(--ink);
-  font-family: "Barlow", system-ui, sans-serif;
+  font-family: var(--body);
   font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: "Barlow Condensed", system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1.1;
-  margin: 0 0 0.4em;
+/* Each top-level block spans the full width (so bands reach the edges)
+   and keeps its own text inside a centred column via side padding. */
+body > header, body > section, body > article, body > main, body > footer {
+  padding-inline: var(--pad);
 }
 
-h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin-top: 4rem; }
-h3 { font-size: 1.35rem; }
+h1, h2, h3 {
+  font-family: var(--display);
+  color: var(--heading);
+  line-height: 1.1;
+  margin: 0 0 0.4em;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+
+/* short gold rule under every section heading */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 0.6rem;
+}
 
 p { max-width: var(--measure); margin: 0 0 1rem; }
 
-a { color: var(--ink); text-decoration-color: var(--ink-quiet);
+a { color: var(--ink); text-decoration-color: var(--gold);
     text-underline-offset: 3px; }
-a:hover { text-decoration-color: var(--ink); }
+a:hover { text-decoration-thickness: 2px; }
 
-:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
-/* --- masthead ---------------------------------------------------- */
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+/* --- masthead: solid violet band ---------------------------------- */
 
 .masthead {
+  background: var(--brand);
+  color: var(--on-brand);
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1.5rem;
-  padding: 2rem 0 3rem;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.1rem;
 }
 .mark {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
   text-decoration: none;
+  color: #ffffff;
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 2px;
 }
-.masthead nav { display: flex; gap: 1.5rem; }
-.masthead nav a, .masthead nav .email { font-size: 0.95rem; color: var(--ink-quiet); }
-.masthead nav a:hover { color: var(--ink); }
+.masthead nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; }
+.masthead nav a {
+  color: var(--on-brand);
+  font-weight: 500;
+  text-decoration: none;
+  padding-block: 0.35rem;
+  border-bottom: 2px solid transparent;
+}
+.masthead nav a:hover { border-bottom-color: var(--gold); }
+.masthead :focus-visible { outline-color: #ffffff; }
 
-/* --- video wells ------------------------------------------------- */
+/* --- video wells -------------------------------------------------- */
 /* .frame keeps any video at 16:9 and stops it overflowing on phones */
 
 .frame {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: var(--panel);
+  max-width: 100%;
+  background: var(--well);
   overflow: hidden;
 }
 .frame iframe,
@@ -84,159 +149,103 @@ a:hover { text-decoration-color: var(--ink); }
   border: 0;
   display: block;
 }
+.caption, .credits { color: var(--ink-quiet); font-size: 0.9rem; margin-top: 0.6rem; }
 
-/* --- reel hero --------------------------------------------------- */
+/* --- reel hero ---------------------------------------------------- */
 
-.reel-meta { padding-top: 2rem; }
-.reel-meta h1 { margin-bottom: 0.5rem; }
-.credits { color: var(--ink-quiet); font-size: 0.95rem; }
+.reel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 2.5rem 3.5rem;
+  align-items: start;
+  padding-block: 3rem 3.5rem;
+}
+.reel-meta h1 { margin-top: 0.6rem; }
+.lead { font-size: 1.2rem; margin-top: 1rem; }
+.facts-list {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.6rem 1.5rem;
+  margin: 1.75rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+.facts-list dt { color: var(--ink-quiet); font-size: 0.9rem; padding-top: 0.1rem; }
+.facts-list dd { margin: 0; font-weight: 500; }
 
-/* --- shot list --------------------------------------------------- */
+/* --- shot list ---------------------------------------------------- */
+
+#work, #about { padding-block: 3.5rem; }
+#work { background: var(--panel); }
+#work h2, #about h2 { margin-top: 0; }
 
 .shots {
   list-style: none;
-  margin: 0;
+  margin: 2.25rem 0 0;
   padding: 0;
   display: grid;
-  gap: 3rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
 }
-.shot a { display: block; text-decoration: none; }
+.shot a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--page);
+  border: 1px solid var(--rule);
+  text-decoration: none;
+}
+.shot a:hover { border-color: var(--brand); }
+.shot a:hover h3 {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
 .shot img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   background: var(--panel);
+  color: var(--ink-quiet);
+  font-size: 0.85rem;
   display: block;
-  margin-bottom: 1rem;
-}
-.shot h3 { margin-bottom: 0.3rem; }
-.shot p { font-size: 0.95rem; }
-.spec { color: var(--ink-quiet); font-size: 0.875rem; }
-
-/* --- shot page --------------------------------------------------- */
-
-.shot-page h1 { margin-top: 2rem; }
-
-.facts {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 0.4rem 1.5rem;
-  margin: 0 0 2rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  font-size: 0.95rem;
 }
-.facts dt { color: var(--ink-quiet); }
-.facts dd { margin: 0; }
-
-.pair {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  margin-bottom: 2rem;
-}
-
-.back { margin-top: 3rem; }
-
-/* --- shot header: range/timecode + team credit, above the video ---- */
-/* Visible before anyone presses play, so there's no ambiguity about
-   what's yours before they even watch the clip. */
-
-.shot-header { margin: 2rem 0 1.5rem; }
-
-.shot-stats {
+.shot h3 { margin: 1.25rem 1.25rem 0.5rem; }
+.shot p { font-size: 0.98rem; margin: 0 1.25rem 0.6rem; }
+.shot .spec {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1rem;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 600;
-  font-size: 1.15rem;
-  margin: 0.4rem 0 1rem;
-}
-.shot-stats span:not(:first-child)::before {
-  content: "·";
-  color: var(--ink-quiet);
-  margin-right: 1rem;
-}
-
-.shot-credit {
-  color: var(--ink-quiet);
-  font-size: 0.95rem;
-  max-width: var(--measure);
-  margin: 0 0 0.5rem;
-  padding-left: 0.9rem;
-  border-left: 2px solid var(--rule);
-}
-
-/* --- shot breakdown list -------------------------------------------- */
-
-.claim-plain {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 0 0 1.5rem;
-}
-
-.breakdown {
-  list-style: none;
-  margin: 0 0 2rem;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.95rem;
-}
-.breakdown li {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.breakdown strong { color: var(--ink); }
-
-/* --- fundamentals studies ----------------------------------------- */
-/* Deliberately smaller and quieter than the .shots grid above — this
-   page is "foundation work", not headline portfolio pieces. */
-
-.fundamentals p { color: var(--ink-quiet); }
-
-.studies {
-  list-style: none;
-  margin: 3rem 0 0;
-  padding: 0;
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.study {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.study-frame {
-  width: 100%;
-  max-width: 540px; /* ~3x the old 180px thumbnail width */
-}
-.study-text {
-  max-width: 540px;
-}
-.study-text h3 {
-  font-size: 1.05rem;
-  margin-bottom: 0.25rem;
-}
-.study-text p {
+  gap: 0.4rem 1.25rem;
+  margin: auto 1.25rem 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule);
   font-size: 0.9rem;
-  color: var(--ink-quiet);
-  margin: 0;
 }
+.spec .k { color: var(--ink-quiet); margin-right: 0.4rem; }
 
-/* --- about, footer ----------------------------------------------- */
+/* --- about -------------------------------------------------------- */
 
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem 3.5rem;
+  align-items: start;
+}
+.about-text { margin-top: 1.5rem; }
+.contact-panel {
+  background: var(--page);
+  border: 1px solid var(--rule);
+  padding: 1.5rem;
+  min-width: 0;
+}
+.contact-panel p { overflow-wrap: anywhere; margin: 0.75rem 0 0; }
 .contact {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 .icon-link { display: inline-flex; }
 .icon-link:hover { opacity: 0.75; }
@@ -247,20 +256,135 @@ a:hover { text-decoration-color: var(--ink); }
   display: block;
 }
 
-footer {
-  margin-top: 5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-quiet);
-  font-size: 0.875rem;
+/* --- shot page ---------------------------------------------------- */
+
+.shot-page { padding-bottom: 3rem; }
+.crumb { display: inline-block; padding-top: 2rem; font-weight: 500; }
+.crumb + .frame { margin-top: 1.5rem; }
+.shot-page h1 { margin-top: 2rem; }
+.shot-page h2 { margin-top: 3rem; }
+
+.shot-header { margin: 1rem 0 2rem; }
+.shot-header h1 { margin-top: 0.4rem; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 1.5rem;
+}
+.stats div { background: var(--page); padding: 0.9rem 1.1rem; display: grid; gap: 0.2rem; }
+.stats .v {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--heading);
+  font-variant-numeric: tabular-nums;
 }
 
-/* --- placeholder marker ------------------------------------------ */
-/* Anything wrapped in <span class="edit"> is highlighted so you can
-   see what you still need to fill in. Delete this rule when done.   */
+.shot-credit {
+  color: var(--ink-quiet);
+  max-width: var(--measure);
+  margin: 1.25rem 0 0;
+}
 
-.edit {
-  background: #4a3a12;
-  color: #f0d99a;
-  padding: 0 0.25em;
+.claim-plain {
+  font-weight: 600;
+  background: var(--panel);
+  border-top: 3px solid var(--gold);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0 0;
+}
+
+/* violet header band, lilac alternating rows */
+.table-wrap { overflow-x: auto; margin-top: 1.75rem; border: 1px solid var(--rule); }
+table { width: 100%; border-collapse: collapse; }
+th {
+  background: var(--brand);
+  color: var(--on-brand);
+  text-align: left;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  white-space: nowrap;
+}
+td { padding: 0.75rem 1rem; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--panel); }
+td:first-child { font-weight: 600; white-space: nowrap; }
+
+.facts {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.7rem 2rem;
+  margin: 1.75rem 0 1.5rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.facts dt { color: var(--ink-quiet); }
+.facts dd { margin: 0; font-weight: 500; }
+
+.pair {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  margin-top: 1.75rem;
+}
+.pair p { margin: 0.6rem 0 0; }
+
+.back { margin-top: 3rem; }
+
+/* --- fundamentals studies ----------------------------------------- */
+/* Stacked: clip on top, caption underneath. Quieter than the shot cards —
+   no borders, small captions. */
+
+.fundamentals { padding-block: 3rem; }
+.fundamentals h1 { margin-top: 0.4rem; }
+.fundamentals p { color: var(--ink-quiet); }
+
+.studies {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  max-width: 36rem;
+  display: grid;
+  gap: 3rem;
+}
+.study { display: flex; flex-direction: column; gap: 0.9rem; }
+.study-frame { width: 100%; max-width: 540px; }
+.study-text { max-width: 540px; }
+.study-text h3 { margin: 0 0 0.25rem; }
+.study-text p { margin: 0; }
+
+/* --- footer ------------------------------------------------------- */
+
+footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.5rem 3rem;
+  color: var(--ink-quiet);
+  font-size: 0.9rem;
+}
+footer p { margin: 0; }
+
+/* --- phones ------------------------------------------------------- */
+
+@media (max-width: 52rem) {
+  .reel, .about { grid-template-columns: minmax(0, 1fr); }
+  #work, #about { padding-block: 2.5rem; }
+}
+@media (max-width: 30rem) {
+  .facts-list, .facts { grid-template-columns: minmax(0, 1fr); gap: 0.1rem; }
+  .facts-list dd, .facts dd { margin-bottom: 0.6rem; }
+}
+
+/* --- placeholder marker ------------------------------------------- */
+/* Anything with class="edit" is highlighted so you can see what you still
+   need to fill in. Kept last so it wins over other text colours.       */
+
+.edit, p.edit, dd.edit, span.edit {
+  background: var(--edit-bg);
+  color: var(--edit-ink);
+  padding: 0 0.3em;
+  border-radius: 2px;
 }

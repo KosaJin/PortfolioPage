@@ -16,10 +16,10 @@ Open `index.html` by double-clicking it and it works.
   links (see "Email address" below). Comments in the file explain both.
 - `images/`, `videos/` — put your thumbnails and clips here.
 
-## Anything highlighted in yellow needs replacing
+## Anything highlighted in gold needs replacing
 
 In the HTML you'll see `<span class="edit">LIKE THIS</span>`. Those render
-with a yellow background so you can spot what's still placeholder. Replace
+with a pale gold background so you can spot what's still placeholder. Replace
 the text, delete the `<span class="edit">` and `</span>` around it.
 
 Also replace, everywhere it appears:
