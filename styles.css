@@ -55,7 +55,7 @@ body {
 
 /* Each top-level block spans the full width (so bands reach the edges)
    and keeps its own text inside a centred column via side padding. */
-body > header, body > section, body > article, body > main, body > footer {
+body > header, body > footer, body > main:not(.home), body > main.home > section {
   padding-inline: var(--pad);
 }
 
@@ -149,6 +149,9 @@ a:hover { text-decoration-thickness: 2px; }
   border: 0;
   display: block;
 }
+/* focus ring drawn inside the frame so overflow:hidden can't clip it */
+.frame video:focus-visible,
+.frame iframe:focus-visible { outline-offset: -3px; }
 .caption, .credits { color: var(--ink-quiet); font-size: 0.9rem; margin-top: 0.6rem; }
 
 /* --- reel hero ---------------------------------------------------- */
@@ -354,7 +357,8 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 .study { display: flex; flex-direction: column; gap: 0.9rem; }
 .study-frame { width: 100%; max-width: 540px; }
 .study-text { max-width: 540px; }
-.study-text h3 { margin: 0 0 0.25rem; }
+.study-text h2 { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.25rem; }
+.study-text h2::after { display: none; }
 .study-text p { margin: 0; }
 
 /* --- footer ------------------------------------------------------- */
