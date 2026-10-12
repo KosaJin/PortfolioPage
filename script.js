@@ -18,6 +18,13 @@ if (prefersReducedMotion) {
     video.currentTime = 0;
     video.load(); // re-arms the poster image in place of the last decoded frame
   });
+
+  // Same rule for the homepage reel: it autoplays via "autoplay=1" in its
+  // YouTube address, so for these visitors switch that off (the video stays
+  // there, they just press play themselves).
+  document.querySelectorAll("iframe[data-autoplay]").forEach(function (frame) {
+    frame.src = frame.src.replace("autoplay=1", "autoplay=0");
+  });
 }
 
 // JOB 2 — every page: find any address written backwards (e.g.
