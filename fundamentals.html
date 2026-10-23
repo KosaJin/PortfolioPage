@@ -4,66 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundamentals — Eren Can Sokmez</title>
-<meta name="description" content="Animation fundamentals studies — bouncing ball, walk cycle, weight tests.">
+<meta name="description" content="Animation fundamentals studies: bouncing ball, walk cycle, weight tests.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="masthead">
+<header class="wrap masthead">
   <a class="mark" href="index.html">Eren Can Sokmez</a>
-  <nav>
+  <nav aria-label="Primary">
     <a href="index.html#work">Work</a>
-    <a href="fundamentals.html">Studies</a>
+    <a href="fundamentals.html" aria-current="page">Studies</a>
     <a href="index.html#about">About</a>
+    <a class="pill-link" href="index.html#about" data-email="moc.liamg@20usnjsk">Email me</a>
   </nav>
 </header>
 
-<main class="fundamentals">
+<main class="wrap page">
 
-  <span class="label">Study pieces</span>
-  <h1>Fundamentals</h1>
-  <p>Study pieces from class and personal practice — the basics on repeat.</p>
+  <div class="page-head">
+    <p class="label">Study pieces</p>
+    <h1>Fundamentals</h1>
+    <p class="intro">Study pieces from class and personal practice: the basics on repeat.</p>
+  </div>
 
-  <!-- ============ STUDIES — duplicate a <li> for each new clip ============ -->
+  <!-- ============ STUDIES — duplicate an <li> for each new clip ============ -->
   <ul class="studies">
 
     <li class="study">
-      <div class="frame study-frame">
+      <div class="frame">
         <video class="auto-clip" autoplay muted loop playsinline preload="metadata"
                aria-label="Bouncing ball study: a ball bouncing along a ramp, silent looping clip"
                poster="images/bouncing-ball-poster.jpg">
           <source src="videos/bouncing-ball-web.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="study-text">
-        <h2>Bouncing ball</h2>
-        <p class="edit">One line — what this shows: timing, spacing, squash and stretch.</p>
-      </div>
+      <h2>Bouncing ball</h2>
     </li>
 
     <li class="study">
-      <div class="frame study-frame">
+      <div class="frame">
         <video class="auto-clip" autoplay muted loop playsinline preload="metadata"
                aria-label="Walk cycle study: a mannequin character walking, silent looping clip"
                poster="images/walk-cycle-poster.jpg">
           <source src="videos/walk-cycle-web.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="study-text">
-        <h2>Walk cycle</h2>
-        <p class="edit">One line — what this shows: weight shift, contact poses, arcs.</p>
-      </div>
+      <h2>Walk cycle</h2>
     </li>
 
   </ul>
 
 </main>
 
-<footer>
-  <p>Eren Can Sokmez · Sydney, Australia · <span class="edit">2026</span> · <a href="privacy.html">Privacy</a></p>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Eren Can Sokmez · Sydney, Australia · 2026</p>
+    <a href="privacy.html">Privacy</a>
+  </div>
 </footer>
 
 <script src="script.js"></script>

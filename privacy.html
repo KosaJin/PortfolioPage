@@ -6,52 +6,62 @@
 <title>Privacy — Eren Can Sokmez</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="masthead">
+<header class="wrap masthead">
   <a class="mark" href="index.html">Eren Can Sokmez</a>
-  <nav>
+  <nav aria-label="Primary">
     <a href="index.html#work">Work</a>
     <a href="fundamentals.html">Studies</a>
     <a href="index.html#about">About</a>
+    <a class="pill-link" href="index.html#about" data-email="moc.liamg@20usnjsk">Email me</a>
   </nav>
 </header>
 
-<main class="shot-page">
+<main class="wrap page">
 
   <a class="crumb" href="index.html">&larr; Home</a>
 
-  <h1>Privacy</h1>
+  <div class="page-head">
+    <h1>Privacy</h1>
+  </div>
 
-  <p>This site has no cookies of its own, no analytics, no forms, no accounts
-     and no ads. I don't collect any information about visitors.</p>
+  <div class="prose">
+    <p>This site has no cookies of its own, no analytics, no forms, no accounts
+       and no ads. I don't collect any information about visitors.</p>
 
-  <p>It does load a few things from other companies. When it does, they can
-     see your IP address and browser details:</p>
+    <p>It does load a few things from other companies. When it does, they can
+       see your IP address and browser details:</p>
 
-  <ul>
-    <li>GitHub hosts the site and sees every request, as any web host does.</li>
-    <li>Google Fonts supplies the typefaces.</li>
-    <li>YouTube supplies the videos, through its youtube-nocookie.com address.
-        Its player may collect data once you press play.</li>
-  </ul>
+    <ul>
+      <li>GitHub hosts the site and sees every request, as any web host does.</li>
+      <li>Google Fonts supplies the typefaces.</li>
+      <li>YouTube supplies the videos, through its youtube-nocookie.com address.
+          Its player may collect data once you press play. On the homepage,
+          YouTube's player script (from youtube.com) also loads so the timeline
+          under the reel can control the video.</li>
+    </ul>
 
-  <p>Links to ArtStation and LinkedIn lead to sites with their own policies.</p>
+    <p>Links to ArtStation and LinkedIn lead to sites with their own policies.</p>
 
-  <p>If you email me, I see your address and message, and use them only to
-     reply.</p>
+    <p>If you email me, I see your address and message, and use them only to
+       reply.</p>
 
-  <p>Questions: <span class="email" title="Written in reverse — read it backwards, or turn on JavaScript for a clickable link.">moc.liamg@20usnjsk</span></p>
+    <p>Questions: <span class="email" title="Written in reverse: read it backwards, or turn on JavaScript for a clickable link.">moc.liamg@20usnjsk</span></p>
 
-  <p class="caption">Last updated 11 October 2026.</p>
+    <p class="caption">Last updated 24 October 2026.</p>
+  </div>
 
 </main>
 
-<footer>
-  <p>Eren Can Sokmez · Sydney, Australia · <span class="edit">2026</span> · <a href="privacy.html">Privacy</a></p>
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Eren Can Sokmez · Sydney, Australia · 2026</p>
+    <a href="privacy.html">Privacy</a>
+  </div>
 </footer>
 
 <script src="script.js"></script>
