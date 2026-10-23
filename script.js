@@ -1,23 +1,15 @@
 // This file does three small, separate jobs. Each is self-contained.
 
-// JOB 1 — reduced motion. Study clips (fundamentals.html) autoplay via the
-// native "autoplay" attribute. If the visitor has "reduce motion" switched on,
-// stop them and drop back to the poster image, and stop the homepage reel
-// from starting by itself (they can still press play).
+// JOB 1 — autoplay. Every video plays muted on its own for every visitor
+// (Eren's choice, 24 Oct 2026). Study clips (fundamentals.html) use the native
+// "autoplay muted" attributes; this is a backup nudge for browsers that wait.
+// The homepage reel is started in JOB 3 once YouTube's player is ready.
 
-var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-if (prefersReducedMotion) {
-  document.querySelectorAll("video.auto-clip").forEach(function (video) {
-    video.pause();
-    video.removeAttribute("autoplay");
-    video.currentTime = 0;
-    video.load();
-  });
-  document.querySelectorAll("iframe[data-autoplay]").forEach(function (frame) {
-    frame.src = frame.src.replace("autoplay=1", "autoplay=0");
-  });
-}
+document.querySelectorAll("video.auto-clip").forEach(function (video) {
+  video.muted = true;
+  var attempt = video.play();
+  if (attempt && attempt.catch) { attempt.catch(function () {}); }
+});
 
 // JOB 2 — email. The address is stored backwards in the HTML
 // ("moc.liamg@20usnjsk") so scraper bots can't lift it.
@@ -98,6 +90,8 @@ document.querySelectorAll("a[data-email]").forEach(function (link) {
     player = new YT.Player(frame, {
       events: {
         onReady: function () {
+          player.mute();
+          player.playVideo();
           range.max = TOTAL;
           total.textContent = pad(TOTAL);
           bar.hidden = false;
